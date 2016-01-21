@@ -2987,17 +2987,17 @@ L.GridLayer = L.Layer.extend({
 				if (tile) {
 					tile.current = true;
 				} else {
-					queue.push(coords);
+					this_queue.push(coords);
 				}
 			}
 		}
 
 		// sort tile queue to load tiles in order of their distance to center
-		queue.sort(function (a, b) {
+		this_queue.sort(function (a, b) {
 			return a.distanceTo(tileCenter) - b.distanceTo(tileCenter);
 		});
 
-		if (queue.length !== 0) {
+		if (this_queue.length !== 0) {
 			// if its the first batch of tiles to load
 			if (!this._loading) {
 				this._loading = true;
@@ -3007,8 +3007,8 @@ L.GridLayer = L.Layer.extend({
 			// create DOM fragment to append tiles in one batch
 			var fragment = document.createDocumentFragment();
 
-			for (i = 0; i < queue.length; i++) {
-				this._addTile(queue[i], fragment);
+			for (i = 0; i < this_queue.length; i++) {
+				this._addTile(this_queue[i], fragment);
 			}
 
 			this._level.el.appendChild(fragment);
@@ -7156,8 +7156,8 @@ L.Map.ScrollWheelZoom = L.Handler.extend({
 
 		var left = Math.max(debounce - (+new Date() - this._startTime), 0);
 
-		clearTimeout(this._timer);
-		this._timer = setTimeout(L.bind(this._performZoom, this), left);
+		clearTimeout(this._start);
+		this._start = setTimeout(L.bind(this._performZoom, this), left);
 
 		L.DomEvent.stop(e);
 	},

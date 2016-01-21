@@ -26,7 +26,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <div class="navbar-icon-container">
-            <a href="#" class="navbar-icon pull-right visible-xs sidebar-toggle-btn" id="nav-btn">
+            <a href="#" class="navbar-icon pull-right visible-xs sidebar-toggle-btn">
               <i class="fa fa-bars fa-lg white"></i>
             </a>
           </div>
@@ -35,7 +35,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="hidden-xs">
-              <a href="#" data-toggle="collapse" class="sidebar-toggle-btn">
+              <a href="#" class="sidebar-toggle-btn">
                 <i class="fa fa-bars fa-lg white"></i>
               </a>
             </li>
@@ -43,34 +43,32 @@
         </div><!--/.navbar-collapse -->
       </div>
     </div>
-
     <div id="container">
-      <div id="sidebar" style="display: none;">
+      <div id="sidebar">
         <div class="sidebar-wrapper">
           <div class="panel panel-default" id="features">
             <div class="panel-heading">
-              <h3 class="panel-title">Параметры
-                <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn">
-                  <i class="fa fa-chevron-left"></i>
-                </button>
-              </h3>
+              <h3 class="panel-title">Параметры</h3>
             </div>
             <div class="panel-body">
               <div class="row">
                 <div class="col-xs-12">
-                  <input type="text" class="form-control" placeholder="ID приложения" />
+                  <input name="id" type="number" class="form-control" placeholder="ID приложения" value="3"/>
                 </div>
                 <div class="col-xs-12">
-                  <input type="text" class="form-control" placeholder="Скорость воспроизведения" />
+                  <input name="speed" type="number" class="form-control" placeholder="Скорость воспроизведения" value="1"/>
                 </div>
                 <div class="col-xs-12">
-                  <input type="datetime" class="form-control datetimepicker" placeholder="Дата\время начала" />
+                  <input name="from" type="datetime" class="form-control datetimepicker" data-date-max-date="2015-12-29 17:00" placeholder="Дата\время начала" />
                 </div>
                 <div class="col-xs-12">
-                  <input type="datetime" class="form-control datetimepicker" placeholder="Дата\время окончания" />
+                  <input name="to" type="datetime" class="form-control datetimepicker" data-date-max-date="2015-12-29 18:00" placeholder="Дата\время окончания" />
                 </div>
                 <div class="col-xs-12 checkbox">
-                  <label><input type="checkbox"/>Данные онлайн</label>
+                  <label>
+                    <input name="online" type="checkbox"/>
+                    Данные онлайн
+                  </label>
                 </div>
               </div>
             </div>
@@ -79,18 +77,29 @@
       </div>
       <div id="map"></div>
     </div>
-    <div class="navbar navbar-inverse navbar-fixed-bottom">
-      <div class="pull-left">
+    <div class="row navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+      <div class="col-xs-4">
+        <div class="pull-left">
             <button id="play" class="btn btn-md btn-primary">
                 Play
             </button>
         </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="text-center">
+          <canvas id="timer" style="display: inline;" height="20" width="200"></canvas>
+        </div>
+      </div>
+      <div class="col-xs-4">
         <div class="pull-right">
             <button id="stop" class="btn btn-md btn-danger">
                 Stop
             </button>
+        </div>
       </div>
+
     </div>
+
     <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -106,32 +115,19 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">
-              Developed by <a href='http://bryanmcbride.com'>bryanmcbride.com</a>
-            </h4>
-          </div>
-          <div class="modal-body">
-            <div id="attribution"></div>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
     <script src="heap.js"></script>
+    <script src="queue.js"></script>
     <script src="leaflet-src.js"></script>
     <script src="leaflet-indoor.js"></script>
     <script src="leaflet.markercluster.js"></script>
     <script src="ibgeomap.js"></script>
     <script src="http://contentsrv.ibecom.ru/tracker/socket.io/socket.io.js"></script>
+    <script src="events.js"></script>
+    <script src="player.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
