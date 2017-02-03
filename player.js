@@ -34,13 +34,13 @@ window.Player = (function(){
                 _pts = this._from + ms; //the time is now
 
             if(_pts > this._to || _queue.isEmpty())
-                throw new Error(i);
+                return;
 
             _point = _queue.peek(); //get point
 
             draw();
 
-            while(_pts > _point.timestamp){
+            while(_point && _pts > parseInt(_point.timestamp)){
                 _point = _queue.dequeue();
                 i++;
             }

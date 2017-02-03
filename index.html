@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#000000">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>IbGeo Map</title>
+    <title>Geo Map Tracker</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
@@ -30,7 +30,7 @@
               <i class="fa fa-bars fa-lg white"></i>
             </a>
           </div>
-          <a class="navbar-brand" href="#">Трекер</a>
+          <a class="navbar-brand" href="#">Tracker</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -48,26 +48,26 @@
         <div class="sidebar-wrapper">
           <div class="panel panel-default" id="features">
             <div class="panel-heading">
-              <h3 class="panel-title">Параметры</h3>
+              <h3 class="panel-title">Paramethers</h3>
             </div>
             <div class="panel-body">
               <div class="row">
                 <div class="col-xs-12">
-                  <input name="id" type="number" class="form-control" placeholder="ID приложения" value="3"/>
+                  <label for="speed">Speed</label>
+                  <input id="speed" name="speed" type="number" class="form-control" placeholder="Speed" value="1"/>
                 </div>
                 <div class="col-xs-12">
-                  <input name="speed" type="number" class="form-control" placeholder="Скорость воспроизведения" value="1"/>
+                  <label for="from">From Date</label>
+                  <input id="from" name="from" type="datetime" class="form-control datetimepicker" data-date-max-date="2015-12-29 16:00" placeholder="From Date" />
                 </div>
                 <div class="col-xs-12">
-                  <input name="from" type="datetime" class="form-control datetimepicker" data-date-max-date="2015-12-29 17:00" placeholder="Дата\время начала" />
-                </div>
-                <div class="col-xs-12">
-                  <input name="to" type="datetime" class="form-control datetimepicker" data-date-max-date="2015-12-29 18:00" placeholder="Дата\время окончания" />
+                  <label for="to">End Date</label>
+                  <input id="to" name="to" type="datetime" class="form-control datetimepicker" data-date-max-date="2015-12-29 18:00" placeholder="End Date" />
                 </div>
                 <div class="col-xs-12 checkbox">
                   <label>
                     <input name="online" type="checkbox"/>
-                    Данные онлайн
+                    Online Data
                   </label>
                 </div>
               </div>
@@ -125,7 +125,6 @@
     <script src="leaflet-indoor.js"></script>
     <script src="leaflet.markercluster.js"></script>
     <script src="ibgeomap.js"></script>
-    <script src="http://contentsrv.ibecom.ru/tracker/socket.io/socket.io.js"></script>
     <script src="events.js"></script>
     <script src="player.js"></script>
     <script src="app.js"></script>
